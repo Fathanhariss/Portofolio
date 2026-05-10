@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alfathan Haris | iOS Aesthetic Portfolio</title>
+    <style>
+        /* CSS Styling - Apple / iOS Liquid Glass Theme */
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
+
+        :root {
+            --bg-dark: #000000;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --accent-blue: #0071e3; /* Warna biru khas Apple */
+            --text-main: #f5f5f7;
+            --text-sub: #86868b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Animated Liquid Background */
+        .liquid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            background: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #000 100%);
+        }
+
+        .blob {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: linear-gradient(135deg, rgba(0, 113, 227, 0.2) 0%, rgba(94, 92, 230, 0.2) 100%);
+            filter: blur(80px);
+            border-radius: 50%;
+            animation: move 20s infinite alternate;
+        }
+
+        .blob-2 {
+            top: 60%;
+            right: -10%;
+            background: linear-gradient(135deg, rgba(175, 82, 222, 0.15) 0%, rgba(255, 55, 95, 0.1) 100%);
+            animation-duration: 15s;
+        }
+
+        @keyframes move {
+            from { transform: translate(-10%, -10%); }
+            to { transform: translate(20%, 20%); }
+        }
+
+        /* Glass Nav */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 1.5rem 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            background: rgba(22, 22, 23, 0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            border: 1px solid var(--glass-border);
+            padding: 0.7rem 2rem;
+            border-radius: 40px;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 400;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 1;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 160px 8% 80px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-img {
+            width: 140px;
+            height: 140px;
+            border-radius: 32px; /* iOS Icon style */
+            object-fit: cover;
+            object-position: top;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            border: 1px solid var(--glass-border);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(180deg, #fff 0%, #a1a1aa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-sub);
+            max-width: 700px;
+            margin-bottom: 3rem;
+            line-height: 1.5;
+        }
+
+        .tag-school {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        /* Bento Grid Projects */
+        .projects {
+            padding: 80px 8%;
+        }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: minmax(200px, auto);
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            padding: 2rem;
+            transition: transform 0.4s cubic-bezier(0.2, 0, 0, 1), background 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .glass-card:hover {
+            transform: scale(1.02);
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Bento Layout Variations */
+        .item-large { grid-column: span 2; grid-row: span 2; }
+        .item-wide { grid-column: span 2; }
+
+        .glass-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+
+        .glass-card p {
+            color: var(--text-sub);
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .badge {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent-blue);
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        /* Footer / Contact */
+        footer {
+            padding: 100px 8%;
+            text-align: center;
+        }
+
+        .footer-glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 40px;
+            padding: 4rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            background: var(--accent-blue);
+            color: white;
+            padding: 1rem 3rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 2rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 113, 227, 0.4);
+        }
+
+        .social-row {
+            margin-top: 3rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .social-link {
+            color: var(--text-sub);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .social-link:hover {
+            color: var(--text-main);
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 900px) {
+            .bento-grid { grid-template-columns: 1fr; }
+            .item-large, .item-wide { grid-column: span 1; grid-row: span 1; }
+            .hero h1 { font-size: 3rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="liquid-bg">
+        <div class="blob"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <nav>
+        <div class="nav-container">
+            <a href="#home">Home</a>
+            <a href="#projects">Work</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <img src="IMG_1654.PNG" alt="Aulia Alfathan Haris" class="profile-img">
+        <div class="tag-school">🎓 UIN Kiai Ageng Muhammad Besari Ponorogo</div>
+        <h1>Aulia Alfathan Haris</h1>
+        <p>
+            Ketua HMPS Manajemen Pendidikan Islam 2026-2027. 
+            Seorang aktivis dan desainer yang fokus pada integrasi kepemimpinan manajerial dengan estetika visual modern.
+        </p>
+        <a href="#projects" class="contact-btn" style="background: white; color: black;">Explore Portfolio</a>
+    </section>
+
+    <section class="projects" id="projects">
+        <div class="bento-grid">
+            
+            <!-- Kepemimpinan - Card Besar -->
+            <div class="glass-card item-large">
+                <div>
+                    <span class="badge">Leadership</span>
+                    <h3>Ketua HMPS MPI</h3>
+                    <p>Memimpin strategi dan eksekusi program kerja Himpunan Mahasiswa Program Studi Manajemen Pendidikan Islam periode 2026-2027. Fokus pada inovasi organisasi dan pemberdayaan mahasiswa.</p>
+                </div>
+                <div style="font-size: 3rem; margin-top: 1rem;">🏛️</div>
+            </div>
+
+            <!-- Desain - Card Lebar -->
+            <div class="glass-card item-wide">
+                <div>
+                    <span class="badge">Creative</span>
+                    <h3>Visual & UI Design</h3>
+                    <p>Menciptakan pengalaman visual minimalis menggunakan Figma dan Affinity Designer. Mengutamakan fungsionalitas dan keindahan dalam setiap piksel.</p>
+                </div>
+            </div>
+
+            <!-- Sertifikasi -->
+            <div class="glass-card">
+                <div>
+                    <span class="badge">Certification</span>
+                    <h3>BLKK Training</h3>
+                    <p>Sertifikasi administrasi perkantoran digital dan manajemen operasional.</p>
+                </div>
+            </div>
+
+            <!-- PMII -->
+            <div class="glass-card">
+                <div>
+                    <span class="badge">Movement</span>
+                    <h3>Biro Kaderisasi</h3>
+                    <p>Aktif di PMII Rayon Suromenggolo 2025. Mengawal proses regenerasi dan nilai ideologi.</p>
+                </div>
+            </div>
+
+            <!-- Literasi - Card Lebar -->
+            <div class="glass-card item-wide">
+                <div>
+                    <span class="badge">Literature</span>
+                    <h3>Kalam Pustaka</h3>
+                    <p>Eksplorasi literatur melalui ulasan mendalam dan kurasi bacaan yang dikemas secara visual. Menghubungkan teks klasik dengan audiens modern.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-glass">
+            <h2>Let's create something great.</h2>
+            <p>Tersedia untuk kolaborasi organisasi, proyek desain, atau diskusi literasi.</p>
+            <a href="https://wa.me/6285730293859" class="contact-btn">Get in Touch</a>
+            
+            <div class="social-row">
+                <a href="mailto:harisalfathan54@gmail.com" class="social-link">Email</a>
+                <a href="https://github.com/Fathanhariss" class="social-link">GitHub</a>
+                <a href="https://wa.me/6285730293859" class="social-link">WhatsApp</a>
+            </div>
+            
+            <p style="margin-top: 4rem; font-size: 0.7rem; color: var(--text-sub);">
+                &copy; 2026 Alfathan Haris. Designed with iOS Aesthetics.
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
