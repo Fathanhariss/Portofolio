@@ -1,2 +1,0 @@
-# Portofolio
-ini portofolio saya
